@@ -7,10 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DecentralizedBank.Controllers
 {
     [RoutePrefix("api/v1/Accounts")]
+    [EnableCors("*", "*", "*")]
     [SwaggerResponse(HttpStatusCode.BadRequest, Description = "In case something is wrong with the request data")]
     public class AccountsController : ApiController
     {

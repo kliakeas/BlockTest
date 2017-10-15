@@ -11,10 +11,7 @@ namespace DecentralizedBank
         {
             config.MapHttpAttributeRoutes();
 
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["EnableCors"]))
-            {
-                config.EnableCors();
-            }
+            config.EnableCors();
 
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter()); //Return string names of enum values instead of numbers
