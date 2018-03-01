@@ -85,6 +85,7 @@ namespace DecentralizedBank.Controllers
                 web3.Personal.UnlockAccount.SendRequestAsync(transferRequest.Sender, ConfigurationManager.AppSettings["GethAccountsPassword"], 60).Wait();
 
                 var wei = Nethereum.Util.UnitConversion.Convert.ToWei(transferRequest.Amount, Nethereum.Util.UnitConversion.EthUnit.Ether);
+
                 var transferTask = web3.TransactionManager.SendTransactionAsync(transferRequest.Sender, transferRequest.Receiver, new Nethereum.Hex.HexTypes.HexBigInteger(wei));
                 transferTask.Wait();
 

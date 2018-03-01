@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace DecentralizedBank
 {
@@ -9,9 +10,10 @@ namespace DecentralizedBank
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
-
             config.EnableCors();
+            //config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+
+            config.MapHttpAttributeRoutes();
 
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Local;
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter()); //Return string names of enum values instead of numbers
